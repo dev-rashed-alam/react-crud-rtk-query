@@ -19,6 +19,21 @@
       "id": "4",
       "value": "Read a book",
       "completed": true
+    },
+    {
+      "id": "937a",
+      "value": "Buy Mobile",
+      "completed": false
+    },
+    {
+      "id": "2fbc",
+      "value": "Buy Laptop",
+      "completed": false
+    },
+    {
+      "id": "394d",
+      "value": "Buy Mouse",
+      "completed": false
     }
   ]
 }
