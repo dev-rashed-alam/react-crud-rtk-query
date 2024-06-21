@@ -1,29 +1,19 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Task from "./TaskItem";
 import {Link} from "react-router-dom";
-import {useAddTaskMutation, useGetTasksQuery} from "./services/jsonServerApi.js";
+import {
+    useAddTaskMutation,
+    useDeleteTaskMutation,
+    useGetTasksQuery,
+    useUpdateTaskMutation
+} from "./services/jsonServerApi.js";
 
 export default function Home() {
     const [newTask, setNewTask] = useState("");
     const {data: tasksList = [], isLoading, isError, error} = useGetTasksQuery()
     const [addTask] = useAddTaskMutation()
-    const BASE_URL = "http://localhost:3000";
-
-    const updateTask = async ({id, ...updatedTask}) => {
-        await fetch(`${BASE_URL}/tasks/${id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedTask),
-        });
-    };
-
-    const deleteTask = async (id) => {
-        await fetch(`${BASE_URL}/tasks/${id}`, {
-            method: "DELETE",
-        });
-    };
+    const [updateTask] = useUpdateTaskMutation()
+    const [deleteTask] = useDeleteTaskMutation()
 
     return (
         <div className="flex h-screen flex-grow items-start justify-center bg-gray-900 p-4">

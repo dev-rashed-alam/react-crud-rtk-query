@@ -8,17 +8,17 @@
     {
       "id": "2",
       "value": "Walk the dog",
-      "completed": true
+      "completed": false
     },
     {
       "id": "3",
       "value": "Finish work project",
-      "completed": true
+      "completed": false
     },
     {
       "id": "4",
       "value": "Read a book",
-      "completed": true
+      "completed": false
     },
     {
       "id": "937a",
@@ -28,11 +28,6 @@
     {
       "id": "2fbc",
       "value": "Buy Laptop",
-      "completed": false
-    },
-    {
-      "id": "394d",
-      "value": "Buy Mouse",
       "completed": false
     }
   ]
