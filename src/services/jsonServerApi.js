@@ -24,14 +24,40 @@ export const jsonServerApi = createApi({
                 method: "PATCH",
                 body: updatedTask
             }),
-            invalidatesTags: ["Tasks"]
+            invalidatesTags: ["Tasks"],
+            async onQueryStarted({id, ...updatedTask}, {dispatch, queryFulfilled}) {
+                const patchResult = dispatch(jsonServerApi.util.updateQueryData("getTasks", undefined, (taskList) => {
+                    const taskIndex = taskList.findIndex(item => item.id === id);
+                    taskList[taskIndex] = {...taskList[taskIndex], ...updatedTask}
+                }))
+
+                try {
+                    await queryFulfilled
+                } catch {
+                    patchResult.undo()
+                }
+            }
         }),
         deleteTask: builder.mutation({
             query: (id) => ({
                 url: `/tasks/${id}`,
                 method: "DELETE"
             }),
-            invalidatesTags: ["Tasks"]
+            invalidatesTags: ["Tasks"],
+            async onQueryStarted(id, {dispatch, queryFulfilled}) {
+                const patchResult = dispatch(
+                    jsonServerApi.util.updateQueryData("getTasks", undefined, (tasksList) => {
+                        const taskIndex = tasksList.findIndex((el) => el.id === id);
+                        tasksList.splice(taskIndex, 1);
+                    }),
+                );
+
+                try {
+                    await queryFulfilled;
+                } catch {
+                    patchResult.undo();
+                }
+            },
         })
     })
 })

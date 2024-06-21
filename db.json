@@ -13,22 +13,12 @@
     {
       "id": "3",
       "value": "Finish work project",
-      "completed": false
+      "completed": true
     },
     {
       "id": "4",
       "value": "Read a book",
-      "completed": false
-    },
-    {
-      "id": "937a",
-      "value": "Buy Mobile",
-      "completed": false
-    },
-    {
-      "id": "2fbc",
-      "value": "Buy Laptop",
-      "completed": false
+      "completed": true
     }
   ]
 }
